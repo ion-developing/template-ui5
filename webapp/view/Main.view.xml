@@ -12,18 +12,23 @@
 		title="{i18n>appTitle}"
 		id="page">
 		<content>
-			<IllustratedMessage
-				title="{i18n>appTitle}"
-				illustrationType="sapIllus-SuccessHighFive"
-				enableVerticalResponsiveness="true"
-				description="{i18n>appDescription}">
-				<additionalContent>
-					<Button
-						id="helloButton"
-						text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-						press="sayHello" />
-				</additionalContent>
-			</IllustratedMessage>
+			  <VBox>
+                    <HBox>
+                        <Input id="newTaskInput" placeholder="Nueva tarea..." />
+                        <Button text="Agregar" press="onAddTask" />
+                    </HBox>
+                    <List id="taskList" items="{/tasks}">
+                        <items>
+                            <CustomListItem>
+                                <HBox>
+                                    <CheckBox selected="{completed}" select="onToggleComplete" />
+                                    <Text text="{title}" />
+                                    <Button icon="sap-icon://delete" press="onDeleteTask" />
+                                </HBox>
+                            </CustomListItem>
+                        </items>
+                    </List>
+                </VBox>
 		</content>
 	</Page>
 
