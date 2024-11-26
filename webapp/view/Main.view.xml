@@ -3,28 +3,40 @@
 	displayBlock="true"
 	xmlns="sap.m"
 	xmlns:mvc="sap.ui.core.mvc"
-	xmlns:core="sap.ui.core"
-	core:require="{
-		formatter: 'template/model/formatter'
-	}">
+  >
 
-	<Page
-		title="{i18n>appTitle}"
-		id="page">
-		<content>
-			<IllustratedMessage
-				title="{i18n>appTitle}"
-				illustrationType="sapIllus-SuccessHighFive"
-				enableVerticalResponsiveness="true"
-				description="{i18n>appDescription}">
-				<additionalContent>
-					<Button
-						id="helloButton"
-						text="{formatter: 'formatter.formatValue', path: 'i18n>btnText'}"
-						press="sayHello" />
-				</additionalContent>
-			</IllustratedMessage>
-		</content>
-	</Page>
+	<Page title="Usuarios">
+        <VBox>
+          <Table
+            id="userTable"
+            items="{/users}"
+            mode="SingleSelectMaster"
+            selectionChange="onSelectionChange">
+            <columns>
+              <Column>
+                <Text text="ID" />
+              </Column>
+              <Column>
+                <Text text="Nombre" />
+              </Column>
+              <Column>
+                <Text text="Email" />
+              </Column>
+            </columns>
+            <items>
+              <ColumnListItem>
+                <cells>
+                  <Text text="{id}" />
+                  <Text text="{name}" />
+                  <Text text="{email}" />
+                </cells>
+              </ColumnListItem>
+            </items>
+          </Table>
+          <Panel id="detailPanel" headerText="Detalles del Usuario" visible="false">
+            <Text id="userDetails" />
+          </Panel>
+        </VBox>
+      </Page>
 
 </mvc:View>
