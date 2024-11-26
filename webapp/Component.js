@@ -1,4 +1,4 @@
-sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], function (UIComponent, Device, models) {
+sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models", "sap/ui/model/json/JSONModel"], function (UIComponent, Device, models, JSONModel) {
 	"use strict";
 
 	return UIComponent.extend("template.Component", {
@@ -7,10 +7,14 @@ sap.ui.define(["sap/ui/core/UIComponent", "sap/ui/Device", "./model/models"], fu
 		},
 		init: function () {
 			// call the base component's init function
-			UIComponent.prototype.init.call(this); // create the views based on the url/hash
+			UIComponent.prototype.init.apply(this,arguments); // create the views based on the url/hash
 
 			// create the device model
-			this.setModel(models.createDeviceModel(), "device");
+			const oModel = new JSONModel({
+				"users": [],
+				"selectedUser": null
+			});
+      this.setModel(oModel);
 
 			// create the views based on the url/hash
 			this.getRouter().initialize();

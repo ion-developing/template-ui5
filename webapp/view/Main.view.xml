@@ -1,42 +1,48 @@
 <mvc:View
-	controllerName="template.controller.Main"
-	displayBlock="true"
-	xmlns="sap.m"
-	xmlns:mvc="sap.ui.core.mvc"
-  >
-
-	<Page title="Usuarios">
+    controllerName="template.controller.Main"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:mvc="sap.ui.core.mvc"
+>
+    <Page title="Usuarios">
         <VBox>
-          <Table
-            id="userTable"
-            items="{/users}"
-            mode="SingleSelectMaster"
-            selectionChange="onSelectionChange">
-            <columns>
-              <Column>
-                <Text text="ID" />
-              </Column>
-              <Column>
-                <Text text="Nombre" />
-              </Column>
-              <Column>
-                <Text text="Email" />
-              </Column>
-            </columns>
-            <items>
-              <ColumnListItem>
-                <cells>
-                  <Text text="{id}" />
-                  <Text text="{name}" />
-                  <Text text="{email}" />
-                </cells>
-              </ColumnListItem>
-            </items>
-          </Table>
-          <Panel id="detailPanel" headerText="Detalles del Usuario" visible="false">
-            <Text id="userDetails" />
-          </Panel>
+            <Table
+                id="userTable"
+                items="{/users}"
+                mode="SingleSelectMaster"
+                selectionChange="onSelectionChange"
+            >
+                <columns>
+                    <Column>
+                        <Text text="ID" />
+                    </Column>
+                    <Column>
+                        <Text text="Nombre" />
+                    </Column>
+                    <Column>
+                        <Text text="Email" />
+                    </Column>
+                </columns>
+                <items>
+                    <ColumnListItem
+                        type="Navigation"
+                        press="onSelectionChange"
+                    >
+                        <cells>
+                            <Text text="{id}" />
+                            <Text text="{name}" />
+                            <Text text="{email}" />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+            </Table>
+            <Panel
+                id="detailPanel"
+                headerText="Detalles del Usuario"
+                visible="false"
+            >
+                <Text id="userDetails" />
+            </Panel>
         </VBox>
-      </Page>
-
+    </Page>
 </mvc:View>
