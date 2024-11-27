@@ -26,7 +26,6 @@
                 <items>
                     <ColumnListItem
                         type="Navigation"
-                        press="onSelectionChange"
                     >
                         <cells>
                             <Text text="{id}" />
@@ -36,13 +35,6 @@
                     </ColumnListItem>
                 </items>
             </Table>
-            <Panel
-                id="detailPanel"
-                headerText="Detalles del Usuario"
-                visible="false"
-            >
-                <Text id="userDetails" />
-            </Panel>
         </VBox>
     </Page>
 </mvc:View>
