@@ -4,7 +4,6 @@ sap.ui.define(["./BaseController", "sap/ui/model/json/JSONModel", "sap/m/Message
 	return BaseController.extend("template.controller.Main", {
 		onInit: function () {
 			var oModel = this.getOwnerComponent().getModel();
-			this.getView().setModel(oModel);
 			$.ajax({
 				url: "https://jsonplaceholder.typicode.com/users",
 				method: "GET",
